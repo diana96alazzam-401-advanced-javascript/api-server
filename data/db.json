@@ -23,6 +23,11 @@
       "display_name": "Wallet",
       "description": "fabric collection",
       "id": 4
+    },
+    {
+      "name": "shoes",
+      "apiId": "v1",
+      "id": 5
     }
   ],
   "products": [
@@ -74,6 +79,14 @@
       "display_name": "necklace",
       "description": "gold",
       "id": 8
+    },
+    {
+      "name": "slipper",
+      "category": "shoes",
+      "description": "new",
+      "price": 1.99,
+      "apiId": "v1",
+      "id": 9
     }
   ]
 }

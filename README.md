@@ -10,6 +10,3 @@
 #### `.env` requirements
 - `PORT` - 3000
 
-#### UML
-
-Link to an image of the UML for your application and response to events
