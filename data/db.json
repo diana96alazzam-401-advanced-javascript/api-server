@@ -1,0 +1,92 @@
+{
+  "categories": [
+    {
+      "name": "wallet",
+      "display_name": "Wallet",
+      "description": "leather collection",
+      "id": 1
+    },
+    {
+      "name": "bags",
+      "display_name": "Winter Bags",
+      "description": "winter leather collection",
+      "id": 2
+    },
+    {
+      "name": "shoes",
+      "display_name": "Shoes",
+      "description": "leather collection",
+      "id": 3
+    },
+    {
+      "name": "wallet",
+      "display_name": "Wallet",
+      "description": "fabric collection",
+      "id": 4
+    },
+    {
+      "name": "shoes",
+      "apiId": "v1",
+      "id": 5
+    }
+  ],
+  "products": [
+    {
+      "category": "shoes",
+      "name": "long boots",
+      "display_name": "Long Boots",
+      "description": "leather boots",
+      "id": 1
+    },
+    {
+      "category": "shoes",
+      "name": "short boots",
+      "display_name": "Cowboy short Boots",
+      "description": "leather cowboy boots",
+      "id": 2
+    },
+    {
+      "category": "bags",
+      "name": "back bag",
+      "display_name": "Hazel bag",
+      "description": "hazel leather bag",
+      "id": 3
+    },
+    {
+      "category": "wallet",
+      "name": "black wallet",
+      "display_name": "Black wallte",
+      "description": "black leather wallet",
+      "id": 4
+    },
+    {
+      "category": "wallet",
+      "name": "hazel wallet",
+      "display_name": "Hazel wallte",
+      "description": "hazel leather wallet",
+      "id": 5
+    },
+    {
+      "category": "wallet",
+      "name": "brown new wallet",
+      "display_name": "brown wallet",
+      "description": "brown leather wallet",
+      "id": 7
+    },
+    {
+      "category": "necklace",
+      "name": "necklace",
+      "display_name": "necklace",
+      "description": "gold",
+      "id": 8
+    },
+    {
+      "name": "slipper",
+      "category": "shoes",
+      "description": "new",
+      "price": 1.99,
+      "apiId": "v1",
+      "id": 9
+    }
+  ]
+}
