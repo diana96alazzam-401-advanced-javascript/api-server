@@ -31,7 +31,7 @@ function editCategory (req, res, next) {
     .catch(next);    
 }
 function deleteCategory (req, res, next) {
-  categoriesModel.delete(req.params.category_id, req.body).then(data=> res.json(data))
+  categoriesModel.delete(req.params.category_id).then(data=> res.json(data))
     .catch(next);  
 }
 

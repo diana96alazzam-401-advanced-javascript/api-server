@@ -29,7 +29,7 @@ function editProduct(req, res, next) {
     .catch(next);
 }
 function deleteProduct(req, res, next) {
-  productsModel.delete(req.params.product_id, req.body).then(data => res.json(data))
+  productsModel.delete(req.params.product_id).then(data => res.json(data))
     .catch(next);
 }
 

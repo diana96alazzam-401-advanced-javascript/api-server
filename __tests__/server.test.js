@@ -1,92 +1,111 @@
 'use strict';
 
 const {server} = require('../lib/server.js');
-const supertest = require('supertest');
-const mockRequest = supertest(server);
+const supergoose = require('@code-fellows/supergoose');
+const mockRequest = supergoose(server);
 
-describe('sever', () => {
-  it('1- should respond with 200 on /categories', () => {
-    return mockRequest.get('/categories').then((results) => {
-      expect(results.status).toBe(200);
-    });
+describe('API', () => {
+  it('post() on route /categories', () => {
+    const categoryObject = {
+      name: 'wallet',
+      display_name: 'Wallet',
+      description: 'leather collection',
+    };
+    return mockRequest
+      .post('/categories')
+      .send(categoryObject)
+      .then((data) => {
+        const record = data.body;
+        Object.keys(categoryObject).forEach((key) => {
+          expect(record[key]).toEqual(categoryObject[key]);
+        });
+      });
   });
-  it('2- should respond with 404 on an invalid route', () => {
-    return mockRequest.get('/invalid').then((results) => {
-      expect(results.status).toBe(404);
-    });
+  it('get() with route /categories', () => {
+    const categoryObject = {
+      name: 'wallet',
+      display_name: 'Wallet',
+      description: 'leather collection',
+    };
+    return mockRequest
+      .post('/categories')
+      .send(categoryObject)
+      .then((data) => {
+        return mockRequest.get('/categories').then((result) => {
+          Object.keys(categoryObject).forEach((key) => {
+            expect(result.body[1][key]).toEqual(categoryObject[key]);
+          });
+        });
+      });
   });
-  it('3- should respond with 200 when getting from this dynamic route /categories/category_id', () => {
-    return mockRequest.get('/categories/0').then((results) => {
-      expect(results.status).toBe(200);
-    });
+  it('put() with route /categories/:category_id', () => {
+    const categoryObject = {
+      name: 'wallet',
+      display_name: 'Wallet',
+      description: 'leather collection',
+    };
+    const editedCategoryObject = {
+      name: 'Edited wallet',
+      display_name: 'Edited Wallet',
+      description: 'Edited leather collection',
+    };
+    return mockRequest
+      .post('/categories')
+      .send(categoryObject)
+      .then((data) => {
+        let id = JSON.parse(data.req.res.client._httpMessage.socket._httpMessage.res.text)._id;
+        return mockRequest.put('/categories/:category_id').send(editedCategoryObject, id).then((result) => {
+          
+          let resultsValues = Object.values(result.request._data);
+          let expectedValues = Object.values(editedCategoryObject);
+          expect(resultsValues).toEqual(expectedValues);
+        });
+      });
   });
-  it('4- should respond with 200 on posting to this route /categories', () => {
-    return mockRequest.post('/categories').then((results) => {
-      expect(results.status).toBe(200);
-    });
+  it('post() on route /products', () => {
+    const productObject = {
+      category: 'shoes',
+      name: 'long boots',
+      display_name: 'Long Boots',
+      description: 'leather boots',
+    };
+    return mockRequest
+      .post('/products')
+      .send(productObject)
+      .then((data) => {
+        const record = data.body;
+        Object.keys(productObject).forEach((key) => {
+          expect(record[key]).toEqual(productObject[key]);
+        });
+      });
   });
-  it('5- should respond with 404 on posting to an invalid route', () => {
-    return mockRequest.post('/invalid').then((results) => {
-      expect(results.status).toBe(404);
-    });
-  });
-  it('6- should respond with 200 on editing on this dynamic route /categories/:category_id', () => {
-    return mockRequest.put('/categories/0').then((results) => {
-      expect(results.status).toBe(200);
-    });
-  });
-  it('7- should respond with 404 on editing on an invalid route', () => {
-    return mockRequest.put('/invalid').then((results) => {
-      expect(results.status).toBe(404);
-    });
-  });
-  it('8- should respond with 404 on partial editing on an invalid route', () => {
-    return mockRequest.patch('/invalid').then((results) => {
-      expect(results.status).toBe(404);
-    });
-  });
-  it('9- should respond with 200 on deleteing with this dynamic route /categories/:category_id', () => {
-    return mockRequest.delete('/categories/0').then((results) => {
-      expect(results.status).toBe(200);
-    });
-  });
-  it('10- should respond with 404 on deleting on an invalid route', () => {
-    return mockRequest.delete('/invalid').then((results) => {
-      expect(results.status).toBe(404);
-    });
-  });
-
-  // products
-
-  it('11- should respond with 200 on /products', () => {
-    return mockRequest.get('/products').then((results) => {
-      expect(results.status).toBe(200);
-    });
-  });
-  it('12- should respond with 200 when getting from this dynamic route /products/product_id', () => {
-    return mockRequest.get('/products/0').then((results) => {
-      expect(results.status).toBe(200);
-    });
-  });
-  it('13- should respond with 200 on posting to this route /products', () => {
-    return mockRequest.post('/products').then((results) => {
-      expect(results.status).toBe(200);
-    });
-  });
-  it('14- should respond with 200 on editing on this dynamic route /products/:category_id', () => {
-    return mockRequest.put('/products/0').then((results) => {
-      expect(results.status).toBe(200);
-    });
-  });
-  it('15- should respond with 200 on partial editing on this dynamic route /products/:category_id', () => {
-    return mockRequest.patch('/products/0').then((results) => {
-      expect(results.status).toBe(200);
-    });
-  });
-  it('16- should respond with 200 on deleteing with this dynamic route /products/:category_id', () => {
-    return mockRequest.delete('/products/0').then((results) => {
-      expect(results.status).toBe(200);
-    });
+  it('put() with route /products/:product_id', () => {
+    const productObject = {
+      category: 'shoes',
+      name: 'long boots',
+      display_name: 'Long Boots',
+      description: 'leather boots',
+    };
+    const editedProductObject = {
+      category: 'Edited shoes',
+      name: 'Edited long boots',
+      display_name: 'Edited Long Boots',
+      description: 'Edited leather boots',
+    };
+    return mockRequest
+      .post('/products')
+      .send(productObject)
+      .then((data) => {
+        let id = JSON.parse(data.req.res.client._httpMessage.socket._httpMessage.res.text)._id;
+        return mockRequest.put('/products/:product_id').send(editedProductObject, id).then((result) => {
+          let resultsValues = Object.values(result.request._data);
+          let expectedValues = Object.values(editedProductObject);
+          expect(resultsValues).toEqual(expectedValues);
+        });
+      });
   });
 });
-  
+
+
+
+
