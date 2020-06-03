@@ -5,14 +5,14 @@ const supergoose = require('@code-fellows/supergoose');
 const mockRequest = supergoose(server);
 
 describe('API', () => {
-  it('post() on route /categories', () => {
+  it('post() on route /api/v1/categories', () => {
     const categoryObject = {
       name: 'wallet',
       display_name: 'Wallet',
       description: 'leather collection',
     };
     return mockRequest
-      .post('/categories')
+      .post('/api/v1/categories')
       .send(categoryObject)
       .then((data) => {
         const record = data.body;
@@ -21,24 +21,24 @@ describe('API', () => {
         });
       });
   });
-  it('get() with route /categories', () => {
+  it('get() with route /api/v1/categories', () => {
     const categoryObject = {
       name: 'wallet',
       display_name: 'Wallet',
       description: 'leather collection',
     };
     return mockRequest
-      .post('/categories')
+      .post('/api/v1/categories')
       .send(categoryObject)
       .then((data) => {
-        return mockRequest.get('/categories').then((result) => {
+        return mockRequest.get('/api/v1/categories').then((result) => {
           Object.keys(categoryObject).forEach((key) => {
             expect(result.body[1][key]).toEqual(categoryObject[key]);
           });
         });
       });
   });
-  it('put() with route /categories/:category_id', () => {
+  it('put() with route /api/v1/categories/:category_id', () => {
     const categoryObject = {
       name: 'wallet',
       display_name: 'Wallet',
@@ -50,11 +50,11 @@ describe('API', () => {
       description: 'Edited leather collection',
     };
     return mockRequest
-      .post('/categories')
+      .post('/api/v1/categories')
       .send(categoryObject)
       .then((data) => {
         let id = JSON.parse(data.req.res.client._httpMessage.socket._httpMessage.res.text)._id;
-        return mockRequest.put('/categories/:category_id').send(editedCategoryObject, id).then((result) => {
+        return mockRequest.put('/api/v1/categories/:category_id').send(editedCategoryObject, id).then((result) => {
           
           let resultsValues = Object.values(result.request._data);
           let expectedValues = Object.values(editedCategoryObject);
@@ -62,7 +62,7 @@ describe('API', () => {
         });
       });
   });
-  it('post() on route /products', () => {
+  it('post() on route /api/v1/products', () => {
     const productObject = {
       category: 'shoes',
       name: 'long boots',
@@ -70,7 +70,7 @@ describe('API', () => {
       description: 'leather boots',
     };
     return mockRequest
-      .post('/products')
+      .post('/api/v1/products')
       .send(productObject)
       .then((data) => {
         const record = data.body;
@@ -79,7 +79,7 @@ describe('API', () => {
         });
       });
   });
-  it('put() with route /products/:product_id', () => {
+  it('put() with route /api/v1/products/:product_id', () => {
     const productObject = {
       category: 'shoes',
       name: 'long boots',
@@ -93,11 +93,11 @@ describe('API', () => {
       description: 'Edited leather boots',
     };
     return mockRequest
-      .post('/products')
+      .post('/api/v1/products')
       .send(productObject)
       .then((data) => {
         let id = JSON.parse(data.req.res.client._httpMessage.socket._httpMessage.res.text)._id;
-        return mockRequest.put('/products/:product_id').send(editedProductObject, id).then((result) => {
+        return mockRequest.put('/api/v1/products/:product_id').send(editedProductObject, id).then((result) => {
           let resultsValues = Object.values(result.request._data);
           let expectedValues = Object.values(editedProductObject);
           expect(resultsValues).toEqual(expectedValues);
