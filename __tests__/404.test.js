@@ -1,7 +1,7 @@
 'use strict';
 const {server} = require('../lib/server.js');
-const supergoose = require('@code-fellows/supergoose');
-const mockRequest = supergoose(server);
+const supertest = require('supertest');
+const mockRequest = supertest(server);
 
 describe('404 internal server error Middleware', () => {
 
