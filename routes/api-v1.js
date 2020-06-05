@@ -13,7 +13,56 @@ router.put('/:model/:id', timestamp, logger, editHandler);
 router.patch('/:model/:id', timestamp, logger, editHandler);
 router.delete('/:model/:id', timestamp, logger, deleteHandler);
 
+/**
+ * Router module which gets the models from the params and use the express router to get/post/put/patch/delete
+ * @module router
+ */
 
+/**
+ * Get all function
+ * @param   req
+ * @param   res
+ * @param   next
+ * @function getAllhandler
+ */
+
+/** 
+ *  * Get one function
+ * @param   req
+ * @param   res
+ * @param   next
+ * @function getOneHandler
+
+ */
+
+/** 
+ *  * Get one function
+ * @param   req
+ * @param   res
+ * @param   next
+ * @function postHandler
+
+ */
+
+/** 
+ *  * Get one function
+ * @param   req
+ * @param   res
+ * @param   next
+ * @function editHandler
+
+ */
+
+/** 
+ *  * Get one function
+ * @param   req
+ * @param   res
+ * @param   next
+ * @function deleteHandler
+
+ */
+
+ 
 function getAllhandler(req, res, next) {
   req.model.get().then((data)=> res.json(data))
     .catch((err)=> next(err.message));   
@@ -25,7 +74,6 @@ function getOneHandler(req, res, next) {
 function postHandler(req, res, next) {
   req.model.create(req.body).then(data=> res.json(data))
     .catch(next);
-
 }
 function editHandler(req, res, next) {
   req.model.update(req.params.id, req.body).then(data=> res.json(data))
@@ -35,5 +83,6 @@ function deleteHandler(req, res, next) {
   req.model.delete(req.params.id).then(data=> res.json(data))
     .catch(next);  
 }
+
 
 module.exports = router;
