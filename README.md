@@ -16,7 +16,7 @@
 - `PORT` - 3000
 - `MONGODB_URI` - `mongodb://heroku_6xb6gz1d:vau5fnoq3pn7gd7pu9ujdjknap@ds135384.mlab.com:35384/heroku_6xb6gz1d`
 
-- documentation route `/docs`
+- documentation route `/`
 
 #### How to initialize/run this application
 
