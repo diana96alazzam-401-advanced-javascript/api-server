@@ -5,7 +5,8 @@
 
 - [Pull request](https://github.com/diana96alazzam-401-advanced-javascript/api-server/pull/6)
 - [ci/cd](https://github.com/diana96alazzam-401-advanced-javascript/api-server/blob/master/.github/workflows/node.yml) (GitHub Actions)
-- [Swagger lab-09](https://app.swaggerhub.com/apis/diana96alazzam/lab9-api-server/0.1)
+- [Swagger](https://app.swaggerhub.com/apis/diana96alazzam/lab9-api-server/0.1)
+- [back-end server url](https://api-server-amman-401d2.herokuapp.com/)
 
 
 
