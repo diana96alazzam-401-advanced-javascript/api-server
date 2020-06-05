@@ -3,7 +3,7 @@
 
 ### Links and Resources
 
-- [Pull request](https://github.com/diana96alazzam-401-advanced-javascript/api-server/pull/2)
+- [Pull request](https://github.com/diana96alazzam-401-advanced-javascript/api-server/pull/4)
 
 - [Swagger lab-06](https://app.swaggerhub.com/apis/diana96alazzam/api-server-lab6/0.1)
 
