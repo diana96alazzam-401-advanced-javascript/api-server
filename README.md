@@ -7,6 +7,7 @@
 - [ci/cd](https://github.com/diana96alazzam-401-advanced-javascript/api-server/blob/master/.github/workflows/node.yml) (GitHub Actions)
 - [Swagger](https://app.swaggerhub.com/apis/diana96alazzam/lab9-api-server/0.1)
 - [back-end server url](https://api-server-amman-401d2.herokuapp.com/)
+- [documentation](https://api-server-amman-401d2.herokuapp.com/docs)
 
 
 
@@ -16,13 +17,13 @@
 - `PORT` - 3000
 - `MONGODB_URI` - `mongodb://heroku_6xb6gz1d:vau5fnoq3pn7gd7pu9ujdjknap@ds135384.mlab.com:35384/heroku_6xb6gz1d`
 
-- documentation route `/`
+- documentation route `/docs`
+
 
 #### How to initialize/run this application
 
 - `nodemon`
 - `npm start`
-
 
 
 #### Tests
