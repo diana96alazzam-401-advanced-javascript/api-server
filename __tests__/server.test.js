@@ -104,6 +104,64 @@ describe('API', () => {
         });
       });
   });
+  it('delete() on route /api/v1/products/:product_id', () => {
+    const productObject = {
+      category: 'shoes',
+      name: 'long boots',
+      display_name: 'Long Boots',
+      description: 'leather boots',
+    };
+    return mockRequest
+      .post('/api/v1/products')
+      .send(productObject)
+      .then((data) => {
+        return mockRequest.delete(`/api/v1/products/${data.body._id}`).send(productObject).then(res=> {
+          expect(res.status).toBe(200);
+        });
+      });
+  });
+  it('404 error when /notfound', () => {
+    const categoryObject = {
+      name: 'wallet',
+      display_name: 'Wallet',
+      description: 'leather collection',
+    };
+    return mockRequest
+      .post('/notfound')
+      .send(categoryObject)
+      .then((data) => {
+        expect(data.status).toBe(404);
+      });
+  });
+  it('get() with route /api/v1/categories/:category_id', () => {
+    const categoryObject = {
+      name: 'wallet',
+      display_name: 'Wallet',
+      description: 'leather collection',
+    };
+    return mockRequest
+      .post('/api/v1/categories')
+      .send(categoryObject)
+      .then((data) => {
+        return mockRequest.get(`/api/v1/categories/${data.body._id}`).then((result) => {
+          expect(result.status).toBe(200);
+        });
+      });
+  });
+  it('invalid model', () => {
+    const productObject = {
+      category: 'shoes',
+      name: 'long boots',
+      display_name: 'Long Boots',
+      description: 'leather boots',
+    };
+    return mockRequest
+      .post('/api/v1/invalid')
+      .send(productObject)
+      .then((data) => {
+        expect(data.status).toBe(500);
+      });
+  });
 });
 
 

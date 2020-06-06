@@ -65,7 +65,7 @@ router.delete('/:model/:id', timestamp, logger, deleteHandler);
  
 function getAllhandler(req, res, next) {
   req.model.get().then((data)=> res.json(data))
-    .catch((err)=> next(err.message));   
+    .catch(next);   
 }
 function getOneHandler(req, res, next) {
   req.model.get(req.params.id).then((data)=> res.json(data))
